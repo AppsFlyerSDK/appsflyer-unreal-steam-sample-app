@@ -1,6 +1,6 @@
-# AppsFlyer Steam Integration
+# AppsFlyer Unreal Steam Integration
 
-## **Getting started with AppsFlyer Steam Integration**
+## **Getting started with AppsFlyer Unreal Steam Integration**
 
 AppsFlyer empowers marketers and helps them make better decisions.
 
@@ -15,9 +15,10 @@ you may use this sample app as a reference for integrating AppsFlyer into your S
 
 
 ### Pre-requisite
-1. Unreal Engine 4.27 
+1. Unreal Engine 4.2x
 2. [Steamworks SDK](https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/Online/Steam/) integrated within your UE4 
 (it's included within the UE4 3rd parties, there is no need to download it)
+3. Steam client installed + an active user
 
 <hr/>
 
@@ -70,10 +71,10 @@ AppsflyerSteamModule()->logEvent(event_name, event_values);
 ## Running the Sample App 
 
 1. Install [Visual Studio](https://visualstudio.microsoft.com/)
-2. Open the solution "../appsflyer-steam-sample-app/steam-sample-app/steamworksexample/SteamworksExample.sln"
+2. Open the UE4 project "AFSteamExample/AFSteamExample.uproject"
 3. Open "Source/AFSteamExample/AFSteamExampleGameMode.cpp" file
 4. On line 24, replace DEV_KEY and STEAM_APP_ID with your [app details](#App-Details)
-5. Launch the sample app from the UE4 engine
+5. Launch the sample app from the UE4 engine editor
 6. After 24 hours, the dashboard will update and show organic/non-organic install and in-app events.
 
 <hr/>
@@ -82,22 +83,40 @@ AppsflyerSteamModule()->logEvent(event_name, event_values);
 
 ### Set Up
 1. Make sure that steam is in your UE4 third parties https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/Online/Steam/
-2. In your unreal editor, go to plugins and activate "Online Subsystem Steam", then restart the editor.
-3. Open your the project in your preferred C++ editor, then in [YOUR-APP-NAME].Build.cs file add  "OpenSSL", "OnlineSubsystem", "OnlineSubsystemSteam"  to your dependencies:
+2. Add the following definitions to Config/DefaultEngine.ini:
+(for reference please check "appsflyer-unreal-steam-sample-app/AppsflyerSteamIntegrationFiles/DefaultEngine.ini" file)
+
+<pre><code>[/Script/Engine.GameEngine]
++NetDriverDefinitions=(DefName="GameNetDriver",DriverClassName="OnlineSubsystemSteam.SteamNetDriver",DriverClassNameFallback="OnlineSubsystemUtils.IpNetDriver")
+</code></pre>
+<pre><code>[OnlineSubsystem]
+DefaultPlatformService=Steam
+</code></pre>
+<pre><code>[OnlineSubsystemSteam]
+bEnabled=true
+SteamDevAppId=480 //replace "480" with your steam app id.
+</code></pre>
+
+<pre><code>[/Script/OnlineSubsystemSteam.SteamNetDriver]
+NetConnectionClassName="OnlineSubsystemSteam.SteamNetConnection"
+</code></pre>
+
+3. In your unreal editor, go to plugins and activate "Online Subsystem Steam", then restart the editor.
+4. Open your the project in your preferred C++ editor, then in [YOUR-APP-NAME].Build.cs file add  "OpenSSL", "OnlineSubsystem", "OnlineSubsystemSteam"  to your dependencies:
 <pre><code>PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "OpenSSL", "OnlineSubsystem", "OnlineSubsystemSteam" });
 </code></pre>
-3. In your Unreal Project files, under Source directory, create a new directory under the name "AppsflyerSteamModule"
-4. Add the following files to the new folder:
+5. In your Unreal Project files, under Source directory, create a new directory under the name "AppsflyerSteamModule"
+6. Copy the following files from "appsflyer-unreal-steam-sample-app/AppsflyerSteamIntegrationFiles/AppsflyerSteamModule" to the new folder:
 - AppsflyerModule.cpp
 - AppsflyerSteamModule.cpp
 - AppsflyerSteamModule.h
 - DeviceID.h
 - RequestData.h
-5. Generate projecte files in order to add OpenSSL https://forums.unrealengine.com/t/how-to-use-included-openssl/670971/2
-6. Within the C++ editor, add the following include to your GameMode file: 
-<pre><code>#include <AppsflyerSteamModule/AppsflyerSteamModule.h>
+7. Generate projecte files in order to add OpenSSL https://forums.unrealengine.com/t/how-to-use-included-openssl/670971/2
+8. Within the C++ editor, add the following include to your GameMode file: 
+<pre><code>#include "AppsflyerSteamModule/AppsflyerSteamModule.h"
 </code></pre>
-7. In the GameMode file, add StartPlay() function:
+9. In the GameMode file, add StartPlay() function:
 <pre><code>UCLASS(minimalapi)
 class AAFSteamExampleGameMode : public AGameModeBase
 {
@@ -124,21 +143,7 @@ public:
 	}
 }
 </code></pre>
-8. Add the following definitions to Config/DefaultEngine.ini:
 
-<code><pre>[/Script/Engine.GameEngine]
-+NetDriverDefinitions=(DefName="GameNetDriver",DriverClassName="OnlineSubsystemSteam.SteamNetDriver",DriverClassNameFallback="OnlineSubsystemUtils.IpNetDriver")
-</code></pre>
-<code><pre>[OnlineSubsystem]
-DefaultPlatformService=Steam
-</code></pre>
-<code><pre>[OnlineSubsystemSteam]
-bEnabled=true
-SteamDevAppId=480
-</code></pre>
-<code><pre>[/Script/OnlineSubsystemSteam.SteamNetDriver]
-NetConnectionClassName="OnlineSubsystemSteam.SteamNetConnection"
-</code></pre>
 
-9. [Initialize](#void-startconst-char-devkey-const-char-appid) the AppsFlyer integration 
-10. Report [in-app events](#void-logeventstdstring-event_name-json-event_values)
+10. [Initialize](#void-startconst-char-devkey-const-char-appid) the AppsFlyer integration 
+11. Report [in-app events](#void-logeventstdstring-event_name-json-event_values)

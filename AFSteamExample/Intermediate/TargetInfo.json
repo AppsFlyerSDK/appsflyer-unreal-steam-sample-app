@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "AFSteamExample",
+			"Path": "C:\\Users\\GilMor\\Documents\\Unreal Projects\\AFSteamExample\\Source\\AFSteamExample.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "AFSteamExampleEditor",
+			"Path": "C:\\Users\\GilMor\\Documents\\Unreal Projects\\AFSteamExample\\Source\\AFSteamExampleEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

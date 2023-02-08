@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"C:\\Users\\GilMor\\Documents\\GitHub\\appsflyer-unreal-steam-sample-app\\AFSteamExample\\Source\\AFSteamExample\\AFSteamExample.Build.cs",
+		"C:\\Users\\GilMor\\Documents\\GitHub\\appsflyer-unreal-steam-sample-app\\AFSteamExample\\Source\\AFSteamExample.Target.cs",
+		"C:\\Users\\GilMor\\Documents\\GitHub\\appsflyer-unreal-steam-sample-app\\AFSteamExample\\Source\\AFSteamExampleEditor.Target.cs"
+	],
+	"EngineVersion": "4.27.2"
+}

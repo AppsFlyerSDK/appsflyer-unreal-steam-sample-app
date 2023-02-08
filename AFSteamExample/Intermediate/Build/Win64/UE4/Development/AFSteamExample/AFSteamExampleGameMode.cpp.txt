@@ -1,0 +1,133 @@
+C:\Users\GilMor\Documents\GitHub\appsflyer-unreal-steam-sample-app\AFSteamExample\Intermediate\Build\Win64\UE4\Development\AFSteamExample\Definitions.AFSteamExample.h
+C:\Users\GilMor\Documents\GitHub\appsflyer-unreal-steam-sample-app\AFSteamExample\Source\AFSteamExample\AFSteamExampleGameMode.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/GameModeBase.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Engine/ServerStatReplicator.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4\Inc\Engine\ServerStatReplicator.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4\Inc\Engine\GameModeBase.generated.h
+C:\Users\GilMor\Documents\GitHub\appsflyer-unreal-steam-sample-app\AFSteamExample\Intermediate\Build\Win64\UE4\Inc\AFSteamExample\AFSteamExampleGameMode.generated.h
+C:\Users\GilMor\Documents\GitHub\appsflyer-unreal-steam-sample-app\AFSteamExample\Source\AFSteamExample\AFSteamExampleHUD.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/HUD.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/HUDHitBox.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/DebugTextInfo.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4\Inc\Engine\DebugTextInfo.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4\Inc\Engine\HUD.generated.h
+C:\Users\GilMor\Documents\GitHub\appsflyer-unreal-steam-sample-app\AFSteamExample\Intermediate\Build\Win64\UE4\Inc\AFSteamExample\AFSteamExampleHUD.generated.h
+C:\Users\GilMor\Documents\GitHub\appsflyer-unreal-steam-sample-app\AFSteamExample\Source\AFSteamExample\AFSteamExampleCharacter.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/Character.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/CharacterMovementReplication.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4\Inc\Engine\CharacterMovementReplication.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/RootMotionSource.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4\Inc\Engine\RootMotionSource.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4\Inc\Engine\Character.generated.h
+C:\Users\GilMor\Documents\GitHub\appsflyer-unreal-steam-sample-app\AFSteamExample\Intermediate\Build\Win64\UE4\Inc\AFSteamExample\AFSteamExampleCharacter.generated.h
+C:\Users\GilMor\Documents\GitHub\appsflyer-unreal-steam-sample-app\AFSteamExample\Source\AppsflyerSteamModule/AppsflyerSteamModule.cpp
+C:\Users\GilMor\Documents\GitHub\appsflyer-unreal-steam-sample-app\AFSteamExample\Source\AppsflyerSteamModule\AppsflyerSteamModule.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks/Steamv155/sdk/public/steam/steam_api.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\steam_api_common.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\steamtypes.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\steamclientpublic.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\steamuniverse.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\steam_api_internal.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamclient.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamuser.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamfriends.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamutils.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteammatchmaking.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\matchmakingtypes.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamuserstats.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamremotestorage.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamapps.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamnetworking.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamscreenshots.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteammusic.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteammusicremote.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamhttp.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\steamhttpenums.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamcontroller.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteaminput.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamugc.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamapplist.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamhtmlsurface.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteaminventory.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamvideo.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamparentalsettings.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamremoteplay.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamnetworkingmessages.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\steamnetworkingtypes.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamnetworkingsockets.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\Steamworks\Steamv155\sdk\public\steam\isteamnetworkingutils.h
+C:\Users\GilMor\Documents\GitHub\appsflyer-unreal-steam-sample-app\AFSteamExample\Source\AppsflyerSteamModule\RequestData.h
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\string
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\xstring
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\iosfwd
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\cstdio
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\cwchar
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\xmemory
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\limits
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\cfloat
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\isa_availability.h
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\cctype
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\vector
+C:\Users\GilMor\Documents\GitHub\appsflyer-unreal-steam-sample-app\AFSteamExample\Source\AppsflyerSteamModule\DeviceID.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/evp.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/opensslconf.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/opensslv.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/ossl_typ.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/e_os2.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/opensslconf.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/symhacks.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/bio.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/crypto.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/safestack.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/stack.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/opensslconf.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/cryptoerr.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/bioerr.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/evperr.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/objects.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/obj_mac.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/asn1.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/opensslconf.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/asn1err.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/bn.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/opensslconf.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/bnerr.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/objectserr.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/hmac.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\ThirdParty\OpenSSL\1.1.1k\include\Win64\VS2015\openssl/opensslconf.h
+C:\Users\GilMor\Documents\GitHub\appsflyer-unreal-steam-sample-app\AFSteamExample\Source\AppsflyerSteamModule\AppsflyerModule.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\iostream
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\istream
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\ostream
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\ios
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\xlocnum
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\cmath
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\iterator
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\streambuf
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\xiosbase
+C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\ucrt\share.h
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\system_error
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\__msvc_system_error_abi.hpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\cerrno
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\stdexcept
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\xcall_once.h
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\xerrc.h
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\xlocale
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\memory
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\typeinfo
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\vcruntime_typeinfo.h
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\vcruntime_exception.h
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\eh.h
+C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\ucrt\corecrt_terminate.h
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\xfacet
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\xlocinfo
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\__msvc_xlocinfo_types.hpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\clocale
+C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\ucrt\locale.h
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\iomanip
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\xlocmon
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\xloctime
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\sstream
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\random
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\algorithm
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\INCLUDE\xbit_ops.h

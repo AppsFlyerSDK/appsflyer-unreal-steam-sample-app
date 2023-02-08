@@ -1,0 +1,2 @@
+C:\Users\GilMor\Documents\Unreal Projects\AFSteamExample\Intermediate\Build\Win64\UE4Editor\Development\AFSteamExample\Definitions.AFSteamExample.h
+C:\Users\GilMor\Documents\Unreal Projects\AFSteamExample\Source\AFSteamExample\AFSteamExample.h

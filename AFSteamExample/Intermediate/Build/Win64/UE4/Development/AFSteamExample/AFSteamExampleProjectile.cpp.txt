@@ -1,0 +1,11 @@
+C:\Users\GilMor\Documents\GitHub\appsflyer-unreal-steam-sample-app\AFSteamExample\Intermediate\Build\Win64\UE4\Development\AFSteamExample\Definitions.AFSteamExample.h
+C:\Users\GilMor\Documents\GitHub\appsflyer-unreal-steam-sample-app\AFSteamExample\Source\AFSteamExample\AFSteamExampleProjectile.h
+C:\Users\GilMor\Documents\GitHub\appsflyer-unreal-steam-sample-app\AFSteamExample\Intermediate\Build\Win64\UE4\Inc\AFSteamExample\AFSteamExampleProjectile.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/ProjectileMovementComponent.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/MovementComponent.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4\Inc\Engine\MovementComponent.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4\Inc\Engine\ProjectileMovementComponent.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Components/SphereComponent.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Components/ShapeComponent.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4\Inc\Engine\ShapeComponent.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4\Inc\Engine\SphereComponent.generated.h

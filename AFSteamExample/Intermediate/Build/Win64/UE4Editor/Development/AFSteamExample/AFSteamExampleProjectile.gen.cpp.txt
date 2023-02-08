@@ -1,0 +1,5 @@
+C:\Users\GilMor\Documents\Unreal Projects\AFSteamExample\Intermediate\Build\Win64\UE4Editor\Development\AFSteamExample\Definitions.AFSteamExample.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
+C:\Users\GilMor\Documents\Unreal Projects\AFSteamExample\Source\AFSteamExample/AFSteamExampleProjectile.h
+C:\Users\GilMor\Documents\Unreal Projects\AFSteamExample\Intermediate\Build\Win64\UE4Editor\Inc\AFSteamExample\AFSteamExampleProjectile.generated.h
