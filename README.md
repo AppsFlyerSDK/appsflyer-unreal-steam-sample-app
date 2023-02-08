@@ -71,10 +71,9 @@ AppsflyerSteamModule()->logEvent(event_name, event_values);
 
 1. Install [Visual Studio](https://visualstudio.microsoft.com/)
 2. Open the solution "../appsflyer-steam-sample-app/steam-sample-app/steamworksexample/SteamworksExample.sln"
-3. Open "Source Files/Main.cpp" file
-4. On line 244, replace DEV_KEY and STEAM_APP_ID with your [app details](#App-Details)
-5. Run the app by pressing on the play button on the top toolbar ("Local Windows Debugger"). Make sure that the mode is set to Debug.
-![Visual Studio Toolbar Image](images/vs-run.PNG?raw=true "Visual Studio Toolbar Image")
+3. Open "Source/AFSteamExample/AFSteamExampleGameMode.cpp" file
+4. On line 24, replace DEV_KEY and STEAM_APP_ID with your [app details](#App-Details)
+5. Launch the sample app from the UE4 engine
 6. After 24 hours, the dashboard will update and show organic/non-organic install and in-app events.
 
 <hr/>
