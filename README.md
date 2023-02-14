@@ -75,13 +75,9 @@ AppsflyerSteamModule()->logEvent(event_name, event_values);
 3. Choose C++ instead of Blueprints
 4. Name the project AppsFlyerSample and press "create project".
 5. Follow [the steps below](#implementing-appsflyer-into-your-own-steam-game)
+6. Launch the sample app from the UE4 engine editor
+7. After 24 hours, the dashboard will update and show organic/non-organic install and in-app events.
 
-1. Install [Visual Studio](https://visualstudio.microsoft.com/)
-2. Open the UE4 project "AFSteamExample/AFSteamExample.uproject"
-3. Open "Source/AFSteamExample/AFSteamExampleGameMode.cpp" file
-4. On line 24, replace DEV_KEY and STEAM_APP_ID with your [app details](#App-Details)
-5. Launch the sample app from the UE4 engine editor
-6. After 24 hours, the dashboard will update and show organic/non-organic install and in-app events.
 
 <hr/>
 
@@ -111,7 +107,7 @@ NetConnectionClassName="OnlineSubsystemSteam.SteamNetConnection"
 4. Open your the project in your preferred C++ editor, then in [YOUR-APP-NAME].Build.cs file add  "OpenSSL", "OnlineSubsystem", "OnlineSubsystemSteam"  to your dependencies:
 <pre><code>PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay", "OpenSSL", "OnlineSubsystem", "OnlineSubsystemSteam" });
 </code></pre>
-5. In your Unreal Project files, under Source directory, create a new directory under the name "AppsflyerSteamModule"
+5. In your Unreal Project files, under **"Source"** directory, create a new directory under the name **"AppsflyerSteamModule"**
 6. Copy the following files from "appsflyer-unreal-steam-sample-app/AppsflyerSteamIntegrationFiles/AppsflyerSteamModule" to the new folder:
 - AppsflyerModule.cpp
 - AppsflyerSteamModule.cpp
@@ -121,18 +117,19 @@ NetConnectionClassName="OnlineSubsystemSteam.SteamNetConnection"
 7. Generate projecte files in order to add OpenSSL https://forums.unrealengine.com/t/how-to-use-included-openssl/670971/2
 8. In the GameMode.h file, add StartPlay() function:
 <pre><code>UCLASS(minimalapi)
-class AAFSteamExampleGameMode : public AGameModeBase
+class AAppsFlyerSampleGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 
 public:
-	AAFSteamExampleGameMode();
+	AAppsFlyerSampleGameMode();
 	virtual void StartPlay() override;
 };
 
 </code></pre>
 
-9. Add the following include to your GameMode.cpp file: 
+9. Open "Source/AppsFlyerSample/AppsFlyerSampleGameMode.cpp" file
+Add the following include to your GameMode.cpp file: 
 <pre><code>#include "AppsflyerSteamModule/AppsflyerSteamModule.cpp"
 </code></pre>
 
@@ -152,6 +149,7 @@ And the following function:
 }
 </code></pre>
 
+Make sure to replace **DEV_KEY** and **STEAM_APP_ID** in the [start](#void-startconst-char-devkey-const-char-appid) function with your [app details](#App-Details)
 
 10. [Initialize](#void-startconst-char-devkey-const-char-appid) the AppsFlyer integration 
 11. Report [in-app events](#void-logeventstdstring-event_name-json-event_values)
