@@ -182,7 +182,7 @@ public:
 		return res;
 	}
 private:
-	std::string _appid = "480";
+	std::string _appid;
 
 	// the AF app _devkey
 	const char* _devkey;
