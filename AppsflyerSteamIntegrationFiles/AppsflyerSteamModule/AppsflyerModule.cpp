@@ -73,7 +73,7 @@ public:
 
 	// report inapp event to AppsFlyer 
 	HTTPRequestHandle af_inappEvent(RequestData req) {
-		std::string url = "https://events.appsflyer.com/v1.0/c2s/inapp/app/webos/" + _appid;
+		std::string url = "https://events.appsflyer.com/v1.0/c2s/inapp/app/steam/" + _appid;
 
 		/* Now specify the POST data */
 		std::ostringstream oss;
@@ -202,7 +202,7 @@ private:
 
 	// report first open event to AppsFlyer 
 	HTTPRequestHandle af_firstOpenRequest(RequestData req) {
-		std::string url = "https://events.appsflyer.com/v1.0/c2s/first_open/app/webos/" + _appid;
+		std::string url = "https://events.appsflyer.com/v1.0/c2s/first_open/app/steam/" + _appid;
 
 		/* Now specify the POST data */
 		std::ostringstream oss;
@@ -215,7 +215,7 @@ private:
 
 	// report session event (after the counter passes 2 opens) to AppsFlyer 
 	HTTPRequestHandle af_sessionRequest(RequestData req) {
-		std::string url = "https://events.appsflyer.com/v1.0/c2s/session/app/webos/" + _appid;
+		std::string url = "https://events.appsflyer.com/v1.0/c2s/session/app/steam/" + _appid;
 
 		/* Now specify the POST data */
 		std::ostringstream oss;
