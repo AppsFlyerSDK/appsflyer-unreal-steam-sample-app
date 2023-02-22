@@ -1,6 +1,6 @@
 # AppsFlyer Unreal Steam Integration
 
-> 🚧 Warning
+> 🚧 OS-Restriction
 > 
 > This sample code currently supports windows environment only.
 
