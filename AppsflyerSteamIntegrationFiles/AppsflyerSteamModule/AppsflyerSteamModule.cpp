@@ -32,6 +32,7 @@ void CAppsflyerSteamModule::OnHTTPCallBack(HTTPRequestCompleted_t* pCallback, bo
 
 	if (bIOFailure) {
 		onCallbackFailure(pCallback);
+		UE_LOG(LogTemp, Warning, TEXT("HTTP error: %i"), pCallback->m_eStatusCode);
 	}
 	else {
 		onCallbackSuccess(pCallback);
@@ -47,21 +48,19 @@ void CAppsflyerSteamModule::OnHTTPCallBack(HTTPRequestCompleted_t* pCallback, bo
 			{
 				afc.increase_AF_counter();
 			}
+			else {
+				UE_LOG(LogTemp, Warning, TEXT("HTTP error: %i"), pCallback->m_eStatusCode);
+			}
 			break;
 		case INAPP_EVENT_REQUEST:
+			UE_LOG(LogTemp, Warning, TEXT("HTTP status: %i"), pCallback->m_eStatusCode);
+			UE_LOG(LogTemp, Warning, TEXT("inapp event"));
 			break;
 		default:
 			break;
 		}
 	}
 	SteamHTTP()->ReleaseHTTPRequest(pCallback->m_hRequest);
-}
-
-void CAppsflyerSteamModule::send_http_post(HTTPRequestHandle handle) {
-	SteamAPICall_t api_handle{};
-	bool res = SteamHTTP()->SendHTTPRequest(handle, &api_handle);
-	m_SteamAPICallCompleted.Set(api_handle, this, &CAppsflyerSteamModule::OnHTTPCallBack);
-	SteamAPI_RunCallbacks();
 }
 
 void CAppsflyerSteamModule::onCallbackSuccess(HTTPRequestCompleted_t* pCallback) {
@@ -125,7 +124,7 @@ void CAppsflyerSteamModule::start(const char* dkey, const char* appid) {
 }
 
 void CAppsflyerSteamModule::logEvent(std::string event_name, std::string event_values) {
-	AppsflyerModule afc("sQ84wpdxRTR4RMCaE9YqS4", "480");
+	AppsflyerModule afc(devkey, appID);
 	CSteamID usrID = SteamUser()->GetSteamID();
 	const auto steamIDInt = SteamUser()->GetSteamID().ConvertToUint64();
 	std::ostringstream os;
@@ -165,5 +164,10 @@ void CAppsflyerSteamModule::logEvent(std::string event_name, std::string event_v
 	req.event_name = event_name;
 	req.event_values = event_values;
 	UE_LOG(LogTemp, Warning, TEXT("AF Connector: sending inapp event"));
-	AppsflyerSteamModule()->send_http_post(afc.af_inappEvent(req));
+
+	SteamAPICall_t api_handle{};
+	HTTPRequestHandle reqH = afc.af_inappEvent(req);
+	bool res = SteamHTTP()->SendHTTPRequest(reqH, &api_handle);
+	m_SteamAPICallCompleted_inapp.Set(api_handle, this, &CAppsflyerSteamModule::OnHTTPCallBack);
+	SteamAPI_RunCallbacks();
 }

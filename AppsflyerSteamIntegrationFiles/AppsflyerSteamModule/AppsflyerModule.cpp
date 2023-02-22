@@ -35,11 +35,6 @@ public:
 
 		result = mx_hmac_sha256((const void*)key, keylen, data, datalen, result, &resultlen);
 
-		////print encrypted data for debugging
-		//for (unsigned int i = 0; i < resultlen; i++) {
-		//	printf("%02hhX", result[i]); // or just "%02X" if you are not using C11 or later
-		//}
-
 		//allocate memory for array
 		std::stringstream ss;
 		for (unsigned int i = 0; i < resultlen; i++) {
