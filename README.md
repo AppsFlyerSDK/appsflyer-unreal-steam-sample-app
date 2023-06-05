@@ -34,13 +34,13 @@ This method receives your API key and app ID and initializes the AppsFlyer Modul
 
 **Method signature**
 
-```
+```c++
 void init(const char* devkey, const char* appID)
 ```
 
 **Usage**:
 
-```
+```c++
 AppsflyerSteamModule()->init("DEV_KEY", "STEAM_APP_ID");
 ```
 
@@ -55,13 +55,13 @@ This method sends first open and /session requests to AppsFlyer.
 
 **Method signature**
 
-```
+```c++
 void start(bool skipFirst = false)
 ```
 
 **Usage**:
 
-```
+```c++
 // without the flag
 AppsflyerSteamModule()->start();
 
@@ -76,18 +76,34 @@ This method receives an event name and JSON object and sends in-app events to Ap
 
 **Method signature**
 
-```
+```c++
 void logEvent(std::string event_name, json event_values)
 ```
 
 **Usage**:
 
-```
+```c++
 //set event name
 std::string event_name = "af_purchase";
 //set json string
 std::string event_values = "{\"af_currency\":\"USD\",\"af_price\":6.66,\"af_revenue\":24.12}";
 AppsflyerSteamModule()->logEvent(event_name, event_values);
+```
+
+### GetAppsFlyerUID
+
+Get AppsFlyer's unique device ID. The SDK generates an AppsFlyer unique device ID upon app installation. When the SDK is started, this ID is recorded as the ID of the first app install.
+
+**Method signature**
+
+```c++
+std::string getAppsFlyerUID()
+```
+
+**Usage**:
+
+```c++
+AppsflyerSteamModule()->getAppsFlyerUID();
 ```
 
 ### IsInstallOlderThanDate
@@ -96,13 +112,13 @@ This method receives a date string and returns true if the game folder modificat
 
 **Method signature**
 
-```
+```c++
 bool isInstallOlderThanDate(std::string datestring)
 ```
 
 **Usage**:
 
-```
+```c++
 // the modification date in this example is "2023-January-23 08:30:00"
 
 // will return false
@@ -149,7 +165,7 @@ NetConnectionClassName="OnlineSubsystemSteam.SteamNetConnection"
 3. In your Unreal editor, go to **Plugins**, activate **Online Subsystem Steam**, and restart the editor.
 4. Open the project in your preferred C++ editor and in `[YOUR-APP-NAME].Build.cs` file, add `OpenSSL`, `OnlineSubsystem`, and `OnlineSubsystemSteam` to your dependencies and `HTTP` as a private dependency:
 
-```
+```c#
 PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay", "OpenSSL", "OnlineSubsystem", "OnlineSubsystemSteam" });
 PrivateDependencyModuleNames.Add("HTTP");
 ```
@@ -166,52 +182,53 @@ PrivateDependencyModuleNames.Add("HTTP");
 7. Generate project files to add OpenSSL. [Learn more](https://forums.unrealengine.com/t/how-to-use-included-openssl/670971/2).
 8. In the `GameMode.h` file, add the `StartPlay() function`:
 
-```UCLASS(minimalapi)
+```c++
+UCLASS(minimalapi)
 class AAppsFlyerSampleGameMode : public AGameModeBase
 {
-	GENERATED_BODY()
+ GENERATED_BODY()
 
 public:
-	AAppsFlyerSampleGameMode();
-	virtual void StartPlay() override;
+ AAppsFlyerSampleGameMode();
+ virtual void StartPlay() override;
 };
 
 ```
 
 9. Open the `Source/AppsFlyerSample/AppsFlyerSampleGameMode.cpp` file and add the following include to your `GameMode.cpp` file:
 
-```
+```c++
 #include "AppsflyerSteamModule/AppsflyerSteamModule.cpp"
 ```
 
-10. Add the following function, making sure to replace `DEV_KEY` and `STEAM_APP_ID` in the [`init`](#void-initconst-char-devkey-const-char-appid) function with your [app details](#app-details):
+10. Add the following function, making sure to replace `DEV_KEY` and `STEAM_APP_ID` in the [`init`](#init) function with your [app details](#app-details):
 
-```
+```c++
 void AAppsFlyerSampleGameMode::StartPlay()
 {
-	Super::StartPlay();
-	if (SteamAPI_Init()) {
-		// init the AF module
-		AppsflyerSteamModule()->init("DEV_KEY", "STEAM_APP_ID")
+ Super::StartPlay();
+ if (SteamAPI_Init()) {
+  // init the AF module
+  AppsflyerSteamModule()->init("DEV_KEY", "STEAM_APP_ID")
 
-		// check whether the install date was not older than 2023-January-02 23:12:34
-		bool isInstallOlderThanDate = AppsflyerSteamModule()->isInstallOlderThanDate("2023-January-02 23:12:34");
+  // check whether the install date was not older than 2023-January-02 23:12:34
+  bool isInstallOlderThanDate = AppsflyerSteamModule()->isInstallOlderThanDate("2023-January-02 23:12:34");
 
-		// send the firstOpen/session event (if the install date is not older than the given date, the AF module will skip the first-open event)
-		AppsflyerSteamModule()->start(!isInstallOlderThanDate);
+  // send the firstOpen/session event (if the install date is not older than the given date, the AF module will skip the first-open event)
+  AppsflyerSteamModule()->start(!isInstallOlderThanDate);
 
-		// Use the following code to send in-app event
-		// set event name
-		std::string event_name = "af_purchase";
-		 // set json string
-		std::string event_values = "{\"af_currency\":\"USD\",\"af_price\":6.66,\"af_revenue\":24.12}";
-		AppsflyerSteamModule()->logEvent(event_name, event_values);
-	}
+  // Use the following code to send in-app event
+  // set event name
+  std::string event_name = "af_purchase";
+  // set json string
+  std::string event_values = "{\"af_currency\":\"USD\",\"af_price\":6.66,\"af_revenue\":24.12}";
+  AppsflyerSteamModule()->logEvent(event_name, event_values);
+ }
 }
 ```
 
-11. [Initialize](#void-initconst-char-devkey-const-char-appid) and [start](#void-startbool-skipfirst--false) the AppsFlyer integration.
-12. Report [in-app events](#void-logeventstdstring-event_name-json-event_values).
+11. [Initialize](#init) and [start](#start) the AppsFlyer integration.
+12. Report [in-app events](#logevent).
 
 ## Deleting Steam cloud saves (resetting the attribution)
 

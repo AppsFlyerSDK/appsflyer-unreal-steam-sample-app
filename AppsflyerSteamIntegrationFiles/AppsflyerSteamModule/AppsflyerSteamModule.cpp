@@ -54,6 +54,12 @@ void CAppsflyerSteamModule::logEvent(std::string event_name, std::string event_v
 	SendHTTPReq(reqH, INAPP_EVENT_REQUEST);
 }
 
+std::string CAppsflyerSteamModule::getAppsFlyerUID()
+{
+	AppsflyerModule afc(devkey, appID);
+	return afc.get_AF_id();
+}
+
 bool CAppsflyerSteamModule::isInstallOlderThanDate(std::string datestring) {
 	AppsflyerModule afc(devkey, appID); 
 	return afc.isInstallOlderThanDate(datestring);
