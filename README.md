@@ -18,7 +18,7 @@ We recommend you use this sample app as a reference for integrating the AppsFlye
 
 <hr/>
 
-**Prerequisites**:
+### Prerequisites
 
 - Unreal Engine 4.2x
 - [Steamworks SDK](https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/Online/Steam/) integrated within your UE4 (usually it’s included within the UE4 third-parties and there’s no need to download it).
