@@ -30,12 +30,12 @@ CAppsflyerSteamModule::CAppsflyerSteamModule() {
 	SteamAPI_RunCallbacks();
 }
 
-void CAppsflyerSteamModule::init(const char* dkey, const char* appid) {
+void CAppsflyerSteamModule::Init(const char* dkey, const char* appid) {
 	devkey = dkey;
 	appID = appid;
 }
 
-void CAppsflyerSteamModule::start(bool skipFirst = false) {
+void CAppsflyerSteamModule::Start(bool skipFirst = false) {
 	AppsflyerModule afc(devkey, appID);
 	RequestData req = buildRequestData();
 
@@ -43,7 +43,7 @@ void CAppsflyerSteamModule::start(bool skipFirst = false) {
 	SendHTTPReq(reqH, FIRST_OPEN_REQUEST);
 }
 
-void CAppsflyerSteamModule::logEvent(std::string event_name, std::string event_values) {
+void CAppsflyerSteamModule::LogEvent(std::string event_name, std::string event_values) {
 	AppsflyerModule afc(devkey, appID);
 	RequestData req = buildRequestData();
 
@@ -54,13 +54,13 @@ void CAppsflyerSteamModule::logEvent(std::string event_name, std::string event_v
 	SendHTTPReq(reqH, INAPP_EVENT_REQUEST);
 }
 
-std::string CAppsflyerSteamModule::getAppsFlyerUID()
+std::string CAppsflyerSteamModule::GetAppsFlyerUID()
 {
 	AppsflyerModule afc(devkey, appID);
 	return afc.get_AF_id();
 }
 
-bool CAppsflyerSteamModule::isInstallOlderThanDate(std::string datestring) {
+bool CAppsflyerSteamModule::IsInstallOlderThanDate(std::string datestring) {
 	AppsflyerModule afc(devkey, appID); 
 	return afc.isInstallOlderThanDate(datestring);
 }
