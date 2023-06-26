@@ -43,12 +43,12 @@ void CAppsflyerSteamModule::Start(bool skipFirst = false) {
 	SendHTTPReq(reqH, FIRST_OPEN_REQUEST);
 }
 
-void CAppsflyerSteamModule::LogEvent(std::string event_name, std::string event_values) {
+void CAppsflyerSteamModule::LogEvent(std::string event_name, std::string event_parameters) {
 	AppsflyerModule afc(devkey, appID);
 	RequestData req = buildRequestData();
 
 	req.event_name = event_name;
-	req.event_values = event_values;
+	req.event_parameters = event_parameters;
 
 	FHttpRequestRef reqH = afc.af_inappEvent(req);
 	SendHTTPReq(reqH, INAPP_EVENT_REQUEST);

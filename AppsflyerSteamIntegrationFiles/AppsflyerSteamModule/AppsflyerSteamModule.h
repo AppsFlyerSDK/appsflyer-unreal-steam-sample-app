@@ -24,7 +24,7 @@ public:
 	// Send first open/session request to AppsFlyer.
 	void Start(bool skipFirst);
 	// This method receives an event name and json object and sends an in-app event to AppsFlyer.
-	void LogEvent(std::string event_name, std::string event_values);
+	void LogEvent(std::string event_name, std::string event_parameters);
 	// get AppsFlyer's unique device ID.
 	std::string GetAppsFlyerUID();
 	// returns true whether the game was installed before

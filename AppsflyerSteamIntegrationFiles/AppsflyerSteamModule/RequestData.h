@@ -14,5 +14,5 @@ public:
 	std::string request_id;
 	std::string limit_ad_tracking;
 	std::string event_name;
-	std::string event_values;
+	std::string event_parameters;
 };

@@ -77,7 +77,7 @@ This method receives an event name and JSON object and sends in-app events to Ap
 **Method signature**
 
 ```c++
-void LogEvent(std::string event_name, json event_values)
+void LogEvent(std::string event_name, json event_parameters)
 ```
 
 **Usage**:
@@ -86,8 +86,8 @@ void LogEvent(std::string event_name, json event_values)
 //set event name
 std::string event_name = "af_purchase";
 //set json string
-std::string event_values = "{\"af_currency\":\"USD\",\"af_price\":6.66,\"af_revenue\":24.12}";
-AppsflyerSteamModule()->LogEvent(event_name, event_values);
+std::string event_parameters = "{\"af_currency\":\"USD\",\"af_price\":6.66,\"af_revenue\":24.12}";
+AppsflyerSteamModule()->LogEvent(event_name, event_parameters);
 ```
 
 ### GetAppsFlyerUID
@@ -221,8 +221,8 @@ void AAppsFlyerSampleGameMode::StartPlay()
   // set event name
   std::string event_name = "af_purchase";
   // set json string
-  std::string event_values = "{\"af_currency\":\"USD\",\"af_price\":6.66,\"af_revenue\":24.12}";
-  AppsflyerSteamModule()->LogEvent(event_name, event_values);
+  std::string event_parameters = "{\"af_currency\":\"USD\",\"af_price\":6.66,\"af_revenue\":24.12}";
+  AppsflyerSteamModule()->LogEvent(event_name, event_parameters);
  }
 }
 ```
