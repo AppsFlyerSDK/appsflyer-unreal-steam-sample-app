@@ -233,4 +233,6 @@ void AAppsFlyerSampleGameMode::StartPlay()
 ## Deleting Steam cloud saves (resetting the attribution)
 
 1. [Disable steam cloud](https://help.steampowered.com/en/faqs/view/68D2-35AB-09A9-7678#enabling).
-2. [Delete the local files](https://help.steampowered.com/en/faqs/view/68D2-35AB-09A9-7678#where).
+2. [Delete the local files](https://help.steampowered.com/en/faqs/view/68D2-35AB-09A9-7678#where) and the `appsflyer_info` file:
+
+![Delete the](https://files.readme.io/d43d8ce-image.png)
