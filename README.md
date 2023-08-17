@@ -236,6 +236,10 @@ void AAppsFlyerSampleGameMode::StartPlay()
 11. [Initialize](#init) and [start](#start) the AppsFlyer integration.
 12. Report [in-app events](#logevent).
 
+## Adding SteamVR Support
+
+Please use the following [guide](https://docs.unrealengine.com/4.27/en-US/SharingAndReleasing/XRDevelopment/VR/VRPlatforms/SteamVR/QuickStart/) in order to integrate your steam game with MetaXR
+
 ## Deleting Steam cloud saves (resetting the attribution)
 
 1. [Disable steam cloud](https://help.steampowered.com/en/faqs/view/68D2-35AB-09A9-7678#enabling).
