@@ -1,4 +1,4 @@
-#include <ThirdParty/Steamworks/Steamv155/sdk/public/steam/steam_api.h>
+#include <ThirdParty/Steamworks/Steamv151/sdk/public/steam/steam_api.h>
 #include "AppsflyerSteamModule.h"
 #include <iostream>
 #include "openssl/evp.h"
@@ -18,10 +18,11 @@ using namespace std;
 class AppsflyerModule
 {
 public:
-	AppsflyerModule(const char *devkey, std::string appid)
+	AppsflyerModule(const char *devkey, std::string appid, bool isCollectSteamUid)
 	{
 		_devkey = devkey;
 		_appid = appid;
+		_isCollectSteamUid = isCollectSteamUid;
 		AFInfoLoadFile();
 	}
 
@@ -87,12 +88,27 @@ public:
 		std::string url = "https://events.appsflyer.com/v1.0/c2s/inapp/app/steam/" + _appid;
 
 		/* Now specify the POST data */
-		std::ostringstream oss;
-
-		oss << "{\"device_ids\":[{\"type\":\"" << req.device_ids[0].type << "\",\"value\":\"" << req.device_ids[0].value << "\"},{\"type\":\"" << req.device_ids[1].type << "\",\"value\":\"" << req.device_ids[1].value << "\"}],\"request_id\":\"" << req.request_id << "\",\"device_os_version\":\"" << req.device_os_version << "\",\"device_model\":\"" << req.device_model << "\",\"limit_ad_tracking\":" << req.limit_ad_tracking << ",\"app_version\":\"" << req.app_version << "\",\"event_parameters\":" << req.event_parameters << ",\"event_name\":\"" << req.event_name << "\"}";
-		std::string jsonData = oss.str();
+		std::string jsonData = postDataStr(req, true);
 
 		return send_http_post(url, jsonData, INAPP_EVENT_REQUEST);
+	}
+
+	std::string postDataStr(RequestData req, bool isEvent = false) {
+		std::ostringstream oss;
+		oss << "{\"device_ids\":[{\"type\":\"" << req.device_ids[0].type << "\",\"value\":\"" << req.device_ids[0].value << "\"}";
+		if (_isCollectSteamUid) {
+			oss << ",{\"type\":\"" << req.device_ids[1].type << "\",\"value\":\"" << req.device_ids[1].value << "\"}"; 
+		}
+		oss << "],\"request_id\":\"" << req.request_id << "\",\"device_os_version\":\"" << req.device_os_version << "\",\"device_model\":\"" << req.device_model << "\",\"limit_ad_tracking\":" << req.limit_ad_tracking << ",\"app_version\":\"" << req.app_version << "\"";
+		if (isEvent) {
+			oss << ",\"event_parameters\":" << req.event_parameters << ",\"event_name\":\"" << req.event_name << "\"";
+		}
+		if (!req.customer_user_id.empty()) {
+			oss << ",\"customer_user_id\":\"" << req.customer_user_id << "\"";
+		}
+		oss << "}";
+
+		return oss.str();
 	}
 
 	// return af uuid
@@ -205,11 +221,12 @@ public:
 	{
 		bool isInstallOlder = false;
 
-		AppId_t steamAppID = std::stoul(_appid, nullptr, 0);
-		char *pchFolder = new char[MAX_PATH];
-		SteamApps()->GetAppInstallDir(steamAppID, pchFolder, MAX_PATH);
+		FString launchDir = FPaths::LaunchDir();
+		UE_LOG(LogTemp, Warning, TEXT("launchDir: %s"), *launchDir);
+		const char* folderPathCh = StringCast<ANSICHAR>(*launchDir).Get();
+
 		struct stat result;
-		if (stat(pchFolder, &result) == 0)
+		if (stat(folderPathCh, &result) == 0)
 		{
 			__time64_t mod_time = result.st_mtime;
 			std::time_t excludeInstallDateBefore = to_time_t(date);
@@ -225,6 +242,8 @@ private:
 
 	// the AF app _devkey
 	const char *_devkey;
+
+	bool _isCollectSteamUid;
 
 	std::string af_counter;
 	std::string af_guid;
@@ -256,9 +275,7 @@ private:
 		std::string url = "https://events.appsflyer.com/v1.0/c2s/first_open/app/steam/" + _appid;
 
 		/* Now specify the POST data */
-		std::ostringstream oss;
-		oss << "{\"device_ids\":[{\"type\":\"" << req.device_ids[0].type << "\",\"value\":\"" << req.device_ids[0].value.c_str() << "\"},{\"type\":\"" << req.device_ids[1].type << "\",\"value\":\"" << req.device_ids[1].value << "\"}],\"timestamp\":" << req.timestamp << ",\"request_id\":\"" << req.request_id << "\",\"device_os_version\":\"" << req.device_os_version << "\",\"device_model\":\"" << req.device_model << "\",\"limit_ad_tracking\":" << req.limit_ad_tracking << ",\"app_version\":\"" << req.app_version << "\"}";
-		std::string jsonData = oss.str();
+		std::string jsonData = postDataStr(req);
 
 		return send_http_post(url, jsonData, FIRST_OPEN_REQUEST);
 		// CURLcode res = send_http_post(url, jsonData);
@@ -270,9 +287,7 @@ private:
 		std::string url = "https://events.appsflyer.com/v1.0/c2s/session/app/steam/" + _appid;
 
 		/* Now specify the POST data */
-		std::ostringstream oss;
-		oss << "{\"device_ids\":[{\"type\":\"" << req.device_ids[0].type << "\",\"value\":\"" << req.device_ids[0].value.c_str() << "\"},{\"type\":\"" << req.device_ids[1].type << "\",\"value\":\"" << req.device_ids[1].value << "\"}],\"timestamp\":" << req.timestamp << ",\"request_id\":\"" << req.request_id << "\",\"device_os_version\":\"" << req.device_os_version << "\",\"device_model\":\"" << req.device_model << "\",\"limit_ad_tracking\":" << req.limit_ad_tracking << ",\"app_version\":\"" << req.app_version << "\"}";
-		std::string jsonData = oss.str();
+		std::string jsonData = postDataStr(req);
 
 		return send_http_post(url, jsonData, SESSION_REQUEST);
 	}
