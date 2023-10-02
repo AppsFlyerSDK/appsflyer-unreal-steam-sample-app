@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <ThirdParty/Steamworks/Steamv155/sdk/public/steam/steam_api.h>
+#include <ThirdParty/Steamworks/Steamv151/sdk/public/steam/steam_api.h>
 // #include <ThirdParty/Steamworks/Steamv155/sdk/steamworksexample/gameenginewin32.h>
 
 #include "AppsflyerModule.cpp"
@@ -30,25 +30,55 @@ CAppsflyerSteamModule::CAppsflyerSteamModule()
 	SteamAPI_RunCallbacks();
 }
 
-void CAppsflyerSteamModule::Init(const char *dkey, const char *appid)
-{
+void CAppsflyerSteamModule::Init(const char* dkey, const char* appid, bool collectSteam) {
 	devkey = dkey;
 	appID = appid;
+	collectSteamUid = collectSteam;
+	isStopped = true;
 }
 
-void CAppsflyerSteamModule::Start(bool skipFirst = false)
+
+std::string CAppsflyerSteamModule::GetSteamUID() {
+	CSteamID usrID = SteamUser()->GetSteamID();
+	const auto steamIDInt = SteamUser()->GetSteamID().ConvertToUint64();
+	std::ostringstream os;
+	os << steamIDInt;
+	std::string steamID = os.str();
+	return steamID;
+}
+
+void CAppsflyerSteamModule::Start(bool skipFirst)
 {
-	AppsflyerModule afc(devkey, appID);
-	RequestData req = buildRequestData();
+	isStopped = false;
+	AppsflyerModule afc(devkey, appID, collectSteamUid);
+	RequestData req = CreateRequestData();
 
 	FHttpRequestRef reqH = afc.af_firstOpen_init(req, skipFirst);
 	SendHTTPReq(reqH, FIRST_OPEN_REQUEST);
 }
 
+void CAppsflyerSteamModule::Stop()
+{
+	isStopped = true;
+}
+
+void CAppsflyerSteamModule::SetCustomerUserId(std::string customerUserID)
+{
+	if (!isStopped) {
+		// Cannot set CustomerUserID while the SDK has started.
+		return;
+	}
+	// Customer User ID has been set
+	cuid = customerUserID;
+}
+
 void CAppsflyerSteamModule::LogEvent(std::string event_name, std::string event_parameters)
 {
-	AppsflyerModule afc(devkey, appID);
-	RequestData req = buildRequestData();
+	if (isStopped) {
+		return;
+	}
+	AppsflyerModule afc(devkey, appID, collectSteamUid);
+	RequestData req = CreateRequestData();
 
 	req.event_name = event_name;
 	req.event_parameters = event_parameters;
@@ -59,19 +89,19 @@ void CAppsflyerSteamModule::LogEvent(std::string event_name, std::string event_p
 
 std::string CAppsflyerSteamModule::GetAppsFlyerUID()
 {
-	AppsflyerModule afc(devkey, appID);
+	AppsflyerModule afc(devkey, appID, collectSteamUid);
 	return afc.get_AF_id();
 }
 
 bool CAppsflyerSteamModule::IsInstallOlderThanDate(std::string datestring)
 {
-	AppsflyerModule afc(devkey, appID);
+	AppsflyerModule afc(devkey, appID, collectSteamUid);
 	return afc.isInstallOlderThanDate(datestring);
 }
 
-RequestData CAppsflyerSteamModule::buildRequestData()
+RequestData CAppsflyerSteamModule::CreateRequestData()
 {
-	AppsflyerModule afc(devkey, appID);
+	AppsflyerModule afc(devkey, appID, collectSteamUid);
 
 	// app build id
 	std::string app_version = "1.0.0";
@@ -96,16 +126,17 @@ RequestData CAppsflyerSteamModule::buildRequestData()
 	af_id.value = afc.get_AF_id().c_str();
 	req.device_ids.insert(req.device_ids.end(), af_id);
 
-	// adding steam uid to the request - TODO: add to request json after approved by the server
-	CSteamID usrID = SteamUser()->GetSteamID();
-	const auto steamIDInt = SteamUser()->GetSteamID().ConvertToUint64();
-	std::ostringstream os;
-	os << steamIDInt;
-	std::string steamID = os.str();
-	DeviceIDs steam_id;
-	steam_id.type = "steamid";
-	steam_id.value = steamID.c_str();
-	req.device_ids.insert(req.device_ids.end(), steam_id);
+	if (collectSteamUid) {
+		//adding steam uid to the request
+		DeviceIDs steam_id;
+		steam_id.type = "steamid";
+		steam_id.value = GetSteamUID().c_str();
+		req.device_ids.insert(req.device_ids.end(), steam_id);
+	}
+
+	if (!cuid.empty()) {
+		req.customer_user_id = cuid;
+	}
 
 	return req;
 }
@@ -127,7 +158,7 @@ void CAppsflyerSteamModule::SendHTTPReq(FHttpRequestRef pRequest, uint64 context
 				if (connectedSuccessfully)
 				{
 					// We should have a JSON response - attempt to process it.
-					AppsflyerModule afc(devkey, appID);
+					AppsflyerModule afc(devkey, appID, collectSteamUid);
 					UE_LOG(LogTemp, Warning, TEXT("HTTP ResponseCode: %i"), pResponse->GetResponseCode());
 					if (contextId == FIRST_OPEN_REQUEST)
 					{
@@ -174,7 +205,7 @@ void CAppsflyerSteamModule::SendHTTPReq(FHttpRequestRef pRequest, uint64 context
 				if (connectedSuccessfully)
 				{
 					// We should have a JSON response - attempt to process it.
-					AppsflyerModule afc(devkey, appID);
+					AppsflyerModule afc(devkey, appID, collectSteamUid);
 					UE_LOG(LogTemp, Warning, TEXT("HTTP ResponseCode: %i"), pResponse->GetResponseCode());
 					UE_LOG(LogTemp, Warning, TEXT("INAPP_EVENT_REQUEST event"));
 				}
