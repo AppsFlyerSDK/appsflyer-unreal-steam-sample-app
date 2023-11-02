@@ -72,7 +72,7 @@ void CAppsflyerSteamModule::SetCustomerUserId(std::string customerUserID)
 	cuid = customerUserID;
 }
 
-void CAppsflyerSteamModule::LogEvent(std::string event_name, std::string event_parameters, std::string event_custom_parameters = "");
+void CAppsflyerSteamModule::LogEvent(std::string event_name, std::string event_parameters, std::string event_custom_parameters);
 {
 	if (isStopped) {
 		return;
