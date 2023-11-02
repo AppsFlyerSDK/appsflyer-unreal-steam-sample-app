@@ -15,6 +15,9 @@
 #include "Interfaces/IHttpResponse.h" //THIRD_PARTY_INCLUDES_END
 #undef UI
 
+#include <codecvt> // codecvt_utf8
+#include <locale>  // wstring_convert
+
 class CAppsflyerSteamModule
 {
 public:
@@ -27,12 +30,12 @@ public:
 	void Stop();
 	void SetCustomerUserId(std::string cuid);
 	// This method receives an event name and json object and sends an in-app event to AppsFlyer.
-	void LogEvent(std::string event_name, std::string event_parameters);
+	void LogEvent(std::string event_name, std::string event_parameters, std::string event_custom_parameters = "");
 	// get AppsFlyer's unique device ID.
 	std::string GetAppsFlyerUID();
 	// returns true whether the game was installed before
 	bool IsInstallOlderThanDate(std::string datestring);
-
+	std::string to_utf8(std::wstring& wide_string);
 private:
 	const char *devkey;
 	const char *appID;
