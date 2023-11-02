@@ -39,6 +39,12 @@ This method receives your API key and app ID and initializes the AppsFlyer Modul
 void Init(const char* devkey, const char* appID, bool collectSteamUid = true)
 ```
 
+<span id="app-details">**Arguments**:</span>
+
+- `string DEV_KEY`: Get from the marketer or [AppsFlyer HQ](https://support.appsflyer.com/hc/en-us/articles/211719806-App-settings-#general-app-settings).
+- `string STEAM_APP_ID`: Found in the [SteamDB](https://steamdb.info/apps/).
+- `bool collectSteamUid`: Whether to collect Steam UID or not. True by default.
+
 **Usage**:
 
 ```c++
@@ -48,12 +54,6 @@ AppsflyerSteamModule()->Init(<< DEV_KEY >>, << STEAM_APP_ID >>);
 // for init without reporting steam_uid
 AppsflyerSteamModule()->Init(<< DEV_KEY >>, << STEAM_APP_ID >>, false);
 ```
-
-<span id="app-details">**Arguments**:</span>
-
-- `string DEV_KEY`: Get from the marketer or [AppsFlyer HQ](https://support.appsflyer.com/hc/en-us/articles/211719806-App-settings-#general-app-settings).
-- `string STEAM_APP_ID`: Found in the [SteamDB](https://steamdb.info/apps/).
-- `bool collectSteamUid`: Whether to collect Steam UID or not. True by default.
 
 `
 ### Start
@@ -103,23 +103,32 @@ This method receives an event name and JSON object and sends in-app events to Ap
 
 **Method signature**
 
+
 ```c++
-void LogEvent(std::string event_name, json event_parameters)
+void LogEvent(std::string event_name, std::string event_values, std::string custom_event_values = "")
 ```
+
+**Arguments**
+
+- `std::string event_name`-
+- `std::string event_parameters`: dictionary object which contains the [predefined event parameters](https://dev.appsflyer.com/hc/docs/ctv-log-event-event-parameters).
+- `std::string event_custom_parameters` (non-mandatory): dictionary object which contains the any custom event parameters. For non-English values, please use [UTF-8 encoding](#to_utf8).
 
 **Usage**:
 
 ```c++
-json event_parameters = { {"af_currency", "USD"}, {"af_price", 6.66}, {"af_revenue", 24.12} };
+// Setting the event parameters json string and event name
 std::string event_name = "af_purchase";
-AppsflyerSteamModule()->LogEvent(event_name, event_parameters);
-```
+std::string event_parameters = "{\"af_currency\":\"USD\",\"af_price\":6.66,\"af_revenue\":24.12}";
+// Send the InApp event request
+AppsflyerPCModule()->LogEvent(event_name, event_parameters);
 
-**Note**: To use the JSON, make sure to use the following imports:
-
-```c++
-#include <nlohmann/json.hpp>
-using json = nlohmann::json;
+// Set non-English values for testing UTF-8 support
+std::wstring ws = L"車B1234 こんにちは";
+std::wstring ws2 = L"新人邀约购物日";
+std::string event_custom_parameters = "{\"goodsName\":\"" + AppsflyerPCModule()->to_utf8(ws) + "\",\"goodsName2\":\"" + AppsflyerPCModule()->to_utf8(ws2) + "\"}";
+// Send inapp event with custom params
+AppsflyerPCModule()->LogEvent(event_name, event_parameters, event_custom_parameters);
 ```
 
 ### SetCustomerUserId
@@ -139,6 +148,23 @@ void SetCustomerUserId(std::string cuid)
 AppsflyerSteamModule()->Init(DEV_KEY, STEAM_APP_ID);
 AppsflyerSteamModule()->SetCustomerUserId("Test-18-9-23");
 AppsflyerSteamModule()->Start();
+```
+
+### To_utf8
+
+This method receives a reference of a `std::wstring` and returns UTF-8 encoded `std::string`
+
+**Method signature**
+
+```c++
+std::string to_utf8(std::wstring& wide_string);
+```
+**Usage**:
+```c++
+// Set non-English values for testing UTF-8 support
+std::wstring ws = L"車B1234 こんにちは";
+std::wstring ws2 = L"新人邀约购物日";
+std::string event_custom_parameters = "{\"goodsName\":\"" + AppsflyerPCModule()->to_utf8(ws) + "\",\"goodsName2\":\"" + AppsflyerPCModule()->to_utf8(ws2) + "\"}";
 ```
 
 ### OnCallbackSuccess, OnCallbackFailure
@@ -276,21 +302,21 @@ void AAppsFlyerSampleGameMode::StartPlay()
 {
  Super::StartPlay();
  if (SteamAPI_Init()) {
-  // init the AF module
-  AppsflyerSteamModule()->Init(<< DEV_KEY >>, << STEAM_APP_ID>>)
+    // init the AF module
+    AppsflyerSteamModule()->Start();
+    // set event name
+    std::string event_name = "af_purchase";
+    // set json string
+    std::string event_parameters = "{\"af_currency\":\"USD\",\"af_price\":6.66,\"af_revenue\":24.12}";
+    // af send inapp event
+    AppsflyerSteamModule()->LogEvent(event_name, event_parameters);
 
-  // check whether the install date was not older than 2023-January-02 23:12:34
-  bool isInstallOlderThanDate = AppsflyerSteamModule()->IsInstallOlderThanDate("2023-January-02 23:12:34");
-
-  // send the firstOpen/session event (if the install date is not older than the given date, the AF module will skip the first-open event)
-  AppsflyerSteamModule()->Start(!isInstallOlderThanDate);
-
-  // Use the following code to send in-app event
-  // set event name
-  std::string event_name = "af_purchase";
-  // set json string
-  std::string event_parameters = "{\"af_currency\":\"USD\",\"af_price\":6.66,\"af_revenue\":24.12}";
-  AppsflyerSteamModule()->LogEvent(event_name, event_parameters);
+    // set non-English values for testing UTF-8 support 
+    std::wstring ws = L"車B1234 こんにちは";
+    std::wstring ws2 = L"新人邀约购物日";
+    std::string event_custom_parameters = "{\"goodsName\":\"" + AppsflyerSteamModule()->to_utf8(ws) + "\",\"goodsName2\":\"" + AppsflyerSteamModule()->to_utf8(ws2) + "\"}";
+    // af send inapp event with custom params
+    AppsflyerSteamModule()->LogEvent(event_name, event_parameters, event_custom_parameters);
  }
 }
 ```

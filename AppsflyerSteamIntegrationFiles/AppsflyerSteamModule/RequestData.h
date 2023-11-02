@@ -16,4 +16,5 @@ public:
 	std::string customer_user_id;
 	std::string event_name;
 	std::string event_parameters;
+	std::string event_custom_parameters;
 };
