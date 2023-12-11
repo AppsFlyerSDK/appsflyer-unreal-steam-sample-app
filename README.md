@@ -16,7 +16,8 @@ AppsFlyer empowers gaming marketers to make better decisions by providing powerf
 
 Game attribution requires the game to integrate the AppsFlyer SDK that records first opens, consecutive sessions, and in-app events. For example, purchase events.
 We recommend you use this sample app as a reference for integrating the AppsFlyer SDK into your Unreal Steam game. 
-<br/>**Note**: The sample code that follows is currently only supported in a Windows environment.
+
+**Note**: The sample code that follows is currently only supported in a Windows environment.
 
 <hr/>
 
